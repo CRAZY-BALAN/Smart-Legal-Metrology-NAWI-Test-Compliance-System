@@ -61,9 +61,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Government of India Official Identity */}
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 rounded bg-[#2F699C] flex items-center justify-center text-white font-bold text-[10px] tracking-wider border border-white/20">
-                GOI
-              </div>
+              <img
+  src="/assets/doca/dca-logo.png"
+  alt="Department of Consumer Affairs"
+  className="h-10 w-auto object-contain"
+/>
               <div className="leading-tight">
                 <div className="font-semibold text-white tracking-wide uppercase">
                   Government of India | भारत सरकार
@@ -168,9 +170,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center space-x-2.5 cursor-pointer"
           onClick={() => setActiveTab('dashboard')}
         >
-          <div className="w-9 h-9 rounded-md bg-[#2F699C] text-white flex items-center justify-center font-bold shadow-xs">
-            <ShieldCheck className="w-5 h-5 text-white" />
-          </div>
+          <img
+  src="/assets/doca/doca.png"
+  alt="Department of Consumer Affairs"
+  className="h-12 w-auto object-contain"
+/>
           <div>
             <div className="font-bold text-[#162F4D] text-base tracking-tight leading-tight">
               Smart Legal Metrology
@@ -182,7 +186,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Primary Tabs */}
-        <nav className="hidden lg:flex items-center space-x-1">
+        <nav className="hidden lg:flex items-center space-x-1 ml-20">
           <button
             id="nav-tab-dashboard"
             onClick={() => setActiveTab('dashboard')}

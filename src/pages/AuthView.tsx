@@ -62,9 +62,11 @@ export const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
         <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_1px_1px,#ffffff_1px,transparent_0)] [background-size:24px_24px]" />
         <div className="relative">
           <div className="flex items-center space-x-3">
-            <div className="w-11 h-11 rounded-md bg-[#2F699C] flex items-center justify-center border border-white/20">
-              <ShieldCheck className="w-6 h-6 text-white" />
-            </div>
+            <img
+  src="/assets/doca/dca-logo.png"
+  alt="Department of Consumer Affairs"
+  className="h-12 w-auto object-contain"
+/>
             <div>
               <div className="font-bold tracking-wide uppercase text-sm">Government of India</div>
               <div className="text-gray-300 text-xs">भारत सरकार</div>

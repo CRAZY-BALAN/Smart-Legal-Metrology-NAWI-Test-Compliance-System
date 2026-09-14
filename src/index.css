@@ -71,3 +71,9 @@
     break-after: page;
   }
 }
+
+
+
+#root {
+  zoom: 1.1;
+}

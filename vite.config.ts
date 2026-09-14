@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // GitHub Pages repository path
+    base: '/Smart-Legal-Metrology-NAWI-Test-Compliance-System/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
