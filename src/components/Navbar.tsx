@@ -196,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   </div>
 ) : (
   <img
-    src={`${import.meta.env.BASE_URL}assets/doca/doca-logo.png`}
+    src={`${import.meta.env.BASE_URL}assets/doca/doca.png`}
     alt="Department of Consumer Affairs"
     className="h-10 w-auto object-contain"
   />
