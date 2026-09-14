@@ -15,6 +15,7 @@ import { UserRole } from '../types';
 
 interface AuthViewProps {
   onLogin: (role: UserRole) => void;
+  isOffline: boolean;
 }
 
 const ROLE_OPTIONS: { role: UserRole; label: string; helper: string }[] = [
@@ -23,7 +24,7 @@ const ROLE_OPTIONS: { role: UserRole; label: string; helper: string }[] = [
   { role: 'ADMIN', label: 'Administrator', helper: 'Full access — rules, inventory & deadlines' },
 ];
 
-export const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
+export const AuthView: React.FC<AuthViewProps> = ({ onLogin, isOffline }) => {
   const [selectedRole, setSelectedRole] = useState<UserRole>('LAB_TECHNICIAN');
   const [officialId, setOfficialId] = useState('');
   const [password, setPassword] = useState('');
@@ -62,11 +63,31 @@ export const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
         <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_1px_1px,#ffffff_1px,transparent_0)] [background-size:24px_24px]" />
         <div className="relative">
           <div className="flex items-center space-x-3">
-            <img
-  src={`${import.meta.env.BASE_URL}assets/doca/dca-logo.png`}
-  alt="Department of Consumer Affairs"
-  className="h-12 w-auto object-contain"
-/>
+            {isOffline ? (
+  <div className="w-10 h-10 rounded-md bg-[#2F699C] flex items-center justify-center">
+    <ShieldCheck className="w-6 h-6 text-white" />
+  </div>
+) : (
+  <img
+    src={`${import.meta.env.BASE_URL}assets/doca/dca-logo.png`}
+    alt="Department of Consumer Affairs"
+    className="h-10 w-auto object-contain"
+    onError={(e) => {
+      e.currentTarget.style.display = 'none';
+      const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+      if (fallback) fallback.style.display = 'flex';
+    }}
+  />
+)}
+
+{!isOffline && (
+  <div
+    className="w-10 h-10 rounded-md bg-[#2F699C] items-center justify-center"
+    style={{ display: 'none' }}
+  >
+    <ShieldCheck className="w-6 h-6 text-white" />
+  </div>
+)}
             <div>
               <div className="font-bold tracking-wide uppercase text-sm">Government of India</div>
               <div className="text-gray-300 text-xs">भारत सरकार</div>
