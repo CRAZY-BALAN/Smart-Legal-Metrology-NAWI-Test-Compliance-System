@@ -63,7 +63,7 @@ export const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
         <div className="relative">
           <div className="flex items-center space-x-3">
             <img
-  src="/assets/doca/dca-logo.png"
+  src={`${import.meta.env.BASE_URL}assets/doca/dca-logo.png`}
   alt="Department of Consumer Affairs"
   className="h-12 w-auto object-contain"
 />
