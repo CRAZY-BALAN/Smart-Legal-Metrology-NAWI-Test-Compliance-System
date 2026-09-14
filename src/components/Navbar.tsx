@@ -61,11 +61,31 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Government of India Official Identity */}
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
-              <img
-  src="/assets/doca/dca-logo.png"
-  alt="Department of Consumer Affairs"
-  className="h-10 w-auto object-contain"
-/>
+              {isOffline ? (
+  <div className="w-10 h-10 rounded-md bg-[#2F699C] flex items-center justify-center">
+    <ShieldCheck className="w-6 h-6 text-white" />
+  </div>
+) : (
+  <img
+    src={`${import.meta.env.BASE_URL}assets/doca/dca-logo.png`}
+    alt="Department of Consumer Affairs"
+    className="h-10 w-auto object-contain"
+    onError={(e) => {
+      e.currentTarget.style.display = 'none';
+      const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+      if (fallback) fallback.style.display = 'flex';
+    }}
+  />
+)}
+
+{!isOffline && (
+  <div
+    className="w-10 h-10 rounded-md bg-[#2F699C] items-center justify-center"
+    style={{ display: 'none' }}
+  >
+    <ShieldCheck className="w-6 h-6 text-white" />
+  </div>
+)}
               <div className="leading-tight">
                 <div className="font-semibold text-white tracking-wide uppercase">
                   Government of India | भारत सरकार
@@ -170,11 +190,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center space-x-2.5 cursor-pointer"
           onClick={() => setActiveTab('dashboard')}
         >
-          <img
-  src="/assets/doca/doca.png"
-  alt="Department of Consumer Affairs"
-  className="h-12 w-auto object-contain"
-/>
+          {isOffline ? (
+  <div className="w-10 h-10 rounded-md bg-[#2F699C] flex items-center justify-center">
+    <ShieldCheck className="w-6 h-6 text-white" />
+  </div>
+) : (
+  <img
+    src={`${import.meta.env.BASE_URL}assets/doca/dca-logo.png`}
+    alt="Department of Consumer Affairs"
+    className="h-10 w-auto object-contain"
+  />
+)}
           <div>
             <div className="font-bold text-[#162F4D] text-base tracking-tight leading-tight">
               Smart Legal Metrology
