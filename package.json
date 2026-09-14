@@ -1,0 +1,87 @@
+{
+  "name": "metasure-nawi",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "npm run build:renderer && npm run build:server",
+    "start": "node dist/server.cjs",
+    "preview": "vite preview",
+    "clean": "rm -rf dist server.js",
+    "lint": "tsc --noEmit",
+    "build:renderer": "vite build",
+    "build:server": "esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "desktop:dev": "npm run build && electron .",
+    "desktop:build": "npm run build && electron-builder --win nsis",
+    "desktop:build:dir": "npm run build && electron-builder --win --dir"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/qrcode": "^1.5.6",
+    "@vitejs/plugin-react": "^5.0.4",
+    "docx": "^9.7.1",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "recharts": "^3.10.1",
+    "vite": "^6.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3",
+    "@types/express": "^4.17.21",
+    "electron": "^37.4.0",
+    "electron-builder": "^26.0.12"
+  },
+  "productName": "METASURE",
+  "description": "NAWI Test, OIML R-76 Compliance and Test Report Generation System",
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "in.metasure.nawi",
+    "productName": "METASURE",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "!src/**/*",
+      "!server.ts"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.cjs"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Metasure-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "METASURE"
+    }
+  }
+}

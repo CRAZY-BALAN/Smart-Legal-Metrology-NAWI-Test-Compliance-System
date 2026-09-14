@@ -1,0 +1,8 @@
+{
+  "name": "Remix Smart Legal Metrology — NAWI Test \u0026 Compliance System",
+  "description": "Ministry of Consumer Affairs, Food \u0026 Public Distribution platform for Non-Automatic Weighing Instruments (NAWI) test report generation as per OIML R-76.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
